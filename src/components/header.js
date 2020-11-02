@@ -1,42 +1,42 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import { css } from "@emotion/core"
+import Navegacion from "../components/nav"
+import styled from "@emotion/styled"
+import { Link } from "gatsby"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
+const RedirectHome = styled(Link)`
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+`
+
+const header = () => {
+  return (
+    <header
+      css={css`
+        background-color: #212529;
+        padding: 0.3rem;
+      `}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+      <div
+        css={css`
+          max-width: 1200px;
+          margin: 0 auto;
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+          @media (min-width: 768px) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+        `}
+      >
+        <RedirectHome to={"/"}>
+          <h1>Hotel Gatsby</h1>
+        </RedirectHome>
+        <Navegacion />
+      </div>
+    </header>
+  )
 }
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header
+export default header
